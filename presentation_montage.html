@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallo Junior - Résumé Année 6e</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #005b96;
+      --secondary: #ffc107;
+      --accent: #e74c3c;
+      --light: #f5faff;
+      --dark: #333;
+      --success: #2ecc71;
+      --info: #3498db;
+    }
+    
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+      font-family: 'Segoe UI', 'Comic Sans MS', 'Fredoka One', sans-serif;
+    }
+    
+    body { 
+      background: linear-gradient(135deg, #f5faff 0%, #e6f2ff 100%);
+      color: var(--dark); 
+      line-height: 1.6;
+      background-attachment: fixed;
+    }
+    
+    .site-header { 
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .site-header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+      background-size: cover;
+      z-index: 0;
+    }
+    
+    .site-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .motto {
+      font-style: italic;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .nav-bar { 
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .nav-bar a { 
+      padding: 0.5rem 1.2rem;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .nav-bar a:hover { 
+      background: var(--secondary);
+      color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .nav-bar a i {
+      font-size: 1.2rem;
+    }
+    
+    .site-footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+    
+    section {
+      margin-bottom: 3rem;
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 10px;
+      height: 100%;
+      background: var(--primary);
+    }
+    
+    h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--secondary);
+      display: inline-block;
+    }
+    
+    .hero-section {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: linear-gradient(rgba(0, 91, 150, 0.8), rgba(0, 91, 150, 0.9)), 
+                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><rect width="100" height="100" fill="%23005b96"/><circle cx="20" cy="20" r="5" fill="%23ffc107"/><circle cx="50" cy="50" r="8" fill="%23ffc107"/><circle cx="80" cy="80" r="6" fill="%23ffc107"/></svg>');
+      background-size: cover;
+      color: white;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-section h2 {
+      color: white;
+      border-bottom: 3px solid var(--secondary);
+      margin: 0 auto 1.5rem;
+    }
+    
+    .hero-img-container {
+      position: relative;
+      margin: 2rem auto;
+      max-width: 800px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .hero-img {
+      width: 100%;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .hero-img-container:hover .hero-img {
+      transform: scale(1.05);
+    }
+    
+    .class-stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .stat-card {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 1rem 2rem;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .stat-card .number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--secondary);
+    }
+    
+    .call-to-action { 
+      text-align: center;
+      margin: 2rem 0;
+    }
+    
+    .btn { 
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      background: var(--secondary);
+      color: var(--primary);
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn:hover {
+      background: #ffd54f;
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .btn i {
+      font-size: 1.2rem;
+    }
+    
+    .subjects-grid { 
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .subject-card { 
+      background: white;
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border: 2px solid var(--light);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .subject-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      border-color: var(--secondary);
+    }
+    
+    .subject-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--secondary);
+    }
+    
+    .subject-card h3 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    
+    .subject-card h3 i {
+      color: var(--accent);
+    }
+    
+    .subject-card ul {
+      padding-left: 1.5rem;
+    }
+    
+    .subject-card li {
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+    
+    .subject-card li::before {
+      content: "•";
+      color: var(--secondary);
+      font-weight: bold;
+      position: absolute;
+      left: -1.2rem;
+      top: 0;
+      font-size: 1.5rem;
+    }
+    
+    .timeline-container {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .timeline-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background: var(--secondary);
+    }
+    
+    .timeline { 
+      list-style: none;
+      padding: 0;
+    }
+    
+    .timeline li {
+      margin: 2rem 0;
+      width: calc(50% - 2rem);
+      position: relative;
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      background: white;
+    }
+    
+    .timeline li:nth-child(odd) {
+      margin-left: auto;
+    }
+    
+    .timeline li:nth-child(even) {
+      margin-right: auto;
+    }
+    
+    .timeline li::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 4px solid var(--secondary);
+    }
+    
+    .timeline li:nth-child(odd)::before {
+      left: -10px;
+      transform: translate(-50%, -50%);
+    }
+    
+    .timeline li:nth-child(even)::before {
+      right: -30px;
+      transform: translate(50%, -50%);
+    }
+    
+    .timeline li strong {
+      display: block;
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .event-icon {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--secondary);
+      color: var(--primary);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    
+    .gallery-grid { 
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      height: 200px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.1);
+    }
+    
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 91, 150, 0.8);
+      color: white;
+      padding: 0.8rem;
+      font-size: 0.9rem;
+      text-align: center;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-caption {
+      transform: translateY(0);
+    }
+    
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+    
+    .scroll-top:hover {
+      opacity: 1;
+      transform: translateY(-5px);
+    }
+    
+    @media (max-width: 768px) {
+      .timeline-container::before {
+        left: 1.5rem;
+      }
+      
+      .timeline li {
+        width: calc(100% - 4rem);
+        margin-left: 2rem !important;
+        margin-right: 0 !important;
+      }
+      
+      .timeline li::before {
+        left: -1.5rem !important;
+        transform: translate(-50%, -50%) !important;
+        right: auto !important;
+      }
+      
+      .nav-bar {
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: center;
+      }
+      
+      .class-stats {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    
+    .animated {
+      animation-duration: 1s;
+      animation-fill-mode: both;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fadeInUp {
+      animation-name: fadeInUp;
+    }
+    
+    .subject-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header animated fadeInUp">
+    <h1>Gallo Junior</h1>
+    <p class="motto">« Au Gallo on vise haut et loin »</p>
+    <nav class="nav-bar">
+      <a href="#accueil"><i class="fas fa-home"></i> Accueil</a>
+      <a href="#programme"><i class="fas fa-book"></i> Programme</a>
+      <a href="#evenements"><i class="fas fa-calendar-alt"></i> Événements</a>
+      <a href="#photos"><i class="fas fa-camera"></i> Photos</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="accueil" class="hero-section animated fadeInUp">
+      <h2>Bienvenue en 6ème !</h2>
+      <p>Replongez dans l'aventure de la classe de 6ème, où nos 28 champions ont grandi entre fou-rires et apprentissages.</p>
+      
+      <div class="class-stats">
+        <div class="stat-card">
+          <div class="number">28</div>
+          <div>Élèves</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">12</div>
+          <div>Matières</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">3</div>
+          <div>Trimestres</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">9</div>
+          <div>Événements</div>
+        </div>
+      </div>
+      
+      <div class="hero-img-container">
+        <!-- Image générée représentant une classe d'école -->
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect width='800' height='400' fill='%235dadec'/><rect x='50' y='150' width='700' height='200' fill='%23f1c40f'/><rect x='100' y='50' width='600' height='100' fill='%233498db'/><circle cx='200' cy='250' r='30' fill='%23e74c3c'/><circle cx='350' cy='250' r='30' fill='%232ecc71'/><circle cx='500' cy='250' r='30' fill='%239b59b6'/><circle cx='650' cy='250' r='30' fill='%23f39c12'/><rect x='150' y='280' width='100' height='70' fill='%233498db'/><rect x='300' y='280' width='100' height='70' fill='%233498db'/><rect x='450' y='280' width='100' height='70' fill='%233498db'/><rect x='600' y='280' width='100' height='70' fill='%233498db'/><text x='400' y='30' font-family='Arial' font-size='20' fill='white' text-anchor='middle'>École Gallo Junior</text></svg>" alt="Classe de 6ème" class="hero-img">
+      </div>
+      
+      <div class="call-to-action">
+        <p>Prêt·e à découvrir les maths effrayantes 👻, les expériences scientifiques qui pétillent et les escapades mémorables ?</p>
+        <a href="#programme" class="btn"><i class="fas fa-arrow-circle-right"></i> C'est parti !</a>
+      </div>
+    </section>
+
+    <section id="programme" class="animated fadeInUp">
+      <h2><i class="fas fa-book-open"></i> Programme de 6ème</h2>
+      <div class="subjects-grid">
+        <div class="subject-card">
+          <div class="subject-icon"><i class="fas fa-font"></i></div>
+          <h3><i class="fas fa-pen-fancy"></i> Français</h3>
+          <ul>
+            <li>Grammaire : fonctions (sujets, compléments…)</li>
+            <li>Lecture : Roman d'aventure et poésie</li>
+            <li>Production écrite : Rédaction humoristique</li>
+          </ul>
+        </div>
+        <div class="subject-card">
+          <div class="subject-icon"><i class="fas fa-calculator"></i></div>
+          <h3><i class="fas fa-square-root-alt"></i> Mathématiques</h3>
+          <ul>
+            <li>Nombres entiers et décimaux</li>
+            <li>Fractions & pourcentages</li>
+            <li>Géométrie : Triangles, périmètres et aires</li>
+          </ul>
+        </div>
+        <div class="subject-card">
+          <div class="subject-icon"><i class="fas fa-globe-africa"></i></div>
+          <h3><i class="fas fa-landmark"></i> Histoire-Géographie</h3>
+          <ul>
+            <li>Antiquité & civilisations</li>
+            <li>Relief et climat de Madagascar</li>
+            <li>Cartographie ludique</li>
+          </ul>
+        </div>
+        <div class="subject-card">
+          <div class="subject-icon"><i class="fas fa-flask"></i></div>
+          <h3><i class="fas fa-atom"></i> Sciences</h3>
+          <ul>
+            <li>Énergies renouvelables</li>
+            <li>Écosystèmes de Madagascar</li>
+            <li>Expériences pratiques</li>
+          </ul>
+        </div>
+        <div class="subject-card">
+          <div class="subject-icon"><i class="fas fa-paint-brush"></i></div>
+          <h3><i class="fas fa-music"></i> Arts & Musique</h3>
+          <ul>
+            <li>Histoire de l'art malgache</li>
+            <li>Création d'instruments</li>
+            <li>Chorale scolaire</li>
+          </ul>
+        </div>
+        <div class="subject-card">
+          <div class="subject-icon"><i class="fas fa-running"></i></div>
+          <h3><i class="fas fa-futbol"></i> Éducation Physique</h3>
+          <ul>
+            <li>Sports collectifs</li>
+            <li>Jeux traditionnels</li>
+            <li>Course d'orientation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="evenements" class="animated fadeInUp">
+      <h2><i class="fas fa-calendar-star"></i> Moments Forts de l'Année</h2>
+      <div class="timeline-container">
+        <ul class="timeline">
+          <li>
+            <div class="event-icon"><i class="fas fa-tree"></i></div>
+            <strong>20 Décembre 2024</strong> – Fête de Noël (thème rouge et blanc) 🎅
+            <div>Décoration de la classe et échange de cadeaux</div>
+          </li>
+          <li>
+            <div class="event-icon"><i class="fas fa-door-open"></i></div>
+            <strong>Début 2025</strong> – Journée portes ouvertes
+            <div>Présentation des projets de classe aux parents</div>
+          </li>
+          <li>
+            <div class="event-icon"><i class="fas fa-bus"></i></div>
+            <strong>20 Février 2025</strong> – Journée des écoles à Manandona (RN7) 🚌
+            <div>Rencontre sportive et culturelle avec d'autres écoles</div>
+          </li>
+          <li>
+            <div class="event-icon"><i class="fas fa-industry"></i></div>
+            <strong>12 Juin 2025</strong> – Visite Usine STAR (ouest d'Antsirabe)
+            <div>Découverte des processus de fabrication</div>
+          </li>
+          <li>
+            <div class="event-icon"><i class="fas fa-birthday-cake"></i></div>
+            <strong>13 Juin 2025</strong> – 34ᵉ anniversaire de l'école (thème rétro années 90) 🎉
+            <div>Concours de déguisement et spectacle</div>
+          </li>
+          <li>
+            <div class="event-icon"><i class="fas fa-file-alt"></i></div>
+            <strong>16-19 Décembre 2024</strong> – Examens de 1er trimestre
+          </li>
+          <li>
+            <div class="event-icon"><i class="fas fa-file-alt"></i></div>
+            <strong>16-19 Mars 2025</strong> – Examens de 2ᵉ trimestre
+          </li>
+          <li>
+            <div class="event-icon"><i class="fas fa-file-alt"></i></div>
+            <strong>16-19 Juin 2025</strong> – Examens de 3ᵉ trimestre + photos de classe
+          </li>
+          <li>
+            <div class="event-icon"><i class="fas fa-utensils"></i></div>
+            <strong>Dernière semaine de juin 2025</strong> – Préparation Fête de Fin d'Année au restaurant "Le Rêve" 🍽️
+            <div>Remise des diplômes et spectacle de fin d'année</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="photos" class="animated fadeInUp">
+      <h2><i class="fas fa-images"></i> Souvenirs en Images</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <!-- Image générée pour la fête de Noël -->
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='400' height='400' fill='%23c0392b'/><circle cx='200' cy='100' r='50' fill='%232ecc71'/><rect x='180' y='150' width='40' height='100' fill='%23bdc3c7'/><circle cx='180' cy='80' r='15' fill='%23f1c40f'/><circle cx='220' cy='80' r='15' fill='%23f1c40f'/><circle cx='200' cy='120' r='10' fill='%23e74c3c'/><rect x='150' y='250' width='100' height='100' fill='%23f39c12'/><rect x='250' y='250' width='100' height='100' fill='%23f39c12'/><circle cx='200' cy='50' r='10' fill='%23f1c40f'/><circle cx='200' cy='30' r='5' fill='%23f1c40f'/></svg>" alt="Fête de Noël" class="gallery-img">
+          <div class="gallery-caption">Fête de Noël</div>
+        </div>
+        <div class="gallery-item">
+          <!-- Image générée pour les portes ouvertes -->
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='400' height='400' fill='%233498db'/><rect x='100' y='100' width='200' height='200' fill='%232c3e50' stroke='%23f1c40f' stroke-width='5'/><circle cx='200' cy='150' r='30' fill='%23f1c40f'/><rect x='180' y='200' width='40' height='40' fill='%23f1c40f'/><rect x='50' y='320' width='300' height='30' fill='%232c3e50'/><circle cx='100' cy='335' r='15' fill='%23f1c40f'/><circle cx='300' cy='335' r='15' fill='%23f1c40f'/></svg>" alt="Portes ouvertes" class="gallery-img">
+          <div class="gallery-caption">Portes ouvertes</div>
+        </div>
+        <div class="gallery-item">
+          <!-- Image générée pour la visite d'usine -->
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='400' height='400' fill='%23959da6'/><rect x='50' y='150' width='300' height='150' fill='%23333'/><rect x='80' y='180' width='60' height='120' fill='%23168dd9'/><rect x='160' y='180' width='60' height='120' fill='%23168dd9'/><rect x='240' y='180' width='60' height='120' fill='%23168dd9'/><rect x='100' y='100' width='200' height='50' fill='%23333'/><rect x='120' y='70' width='30' height='30' fill='%23d35400'/><rect x='250' y='70' width='30' height='30' fill='%23d35400'/><circle cx='100' cy='320' r='30' fill='%232c3e50'/><circle cx='300' cy='320' r='30' fill='%232c3e50'/><rect x='50' y='100' width='20' height='50' fill='%23d35400'/></svg>" alt="Visite Usine STAR" class="gallery-img">
+          <div class="gallery-caption">Visite Usine STAR</div>
+        </div>
+        <div class="gallery-item">
+          <!-- Image générée pour l'anniversaire de l'école -->
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='400' height='400' fill='%239b59b6'/><circle cx='200' cy='150' r='80' fill='%23f1c40f'/><text x='200' y='160' font-family='Arial' font-size='30' fill='black' text-anchor='middle'>34</text><rect x='100' y='250' width='200' height='100' fill='%233498db'/><rect x='150' y='230' width='100' height='20' fill='%23e74c3c'/><circle cx='180' cy='300' r='20' fill='%232ecc71'/><circle cx='220' cy='300' r='20' fill='%232ecc71'/></svg>" alt="Anniversaire école" class="gallery-img">
+          <div class="gallery-caption">Anniversaire de l'école</div>
+        </div>
+        <div class="gallery-item">
+          <!-- Image générée pour la photo de classe -->
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='400' height='400' fill='%231abc9c'/><rect x='50' y='100' width='300' height='200' fill='%23f1c40f'/><circle cx='150' cy='150' r='20' fill='%23e74c3c'/><circle cx='250' cy='150' r='20' fill='%233498db'/><circle cx='200' cy='200' r='25' fill='%239b59b6'/><rect x='100' cy='250' width='200' height='30' fill='%23333' rx='5'/></svg>" alt="Photo de classe" class="gallery-img">
+          <div class="gallery-caption">Photo de classe</div>
+        </div>
+        <div class="gallery-item">
+          <!-- Image générée pour la fête de fin d'année -->
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='400' height='400' fill='%231abc9c'/><rect x='100' y='150' width='200' height='150' fill='%23e74c3c' stroke='%23f1c40f' stroke-width='5'/><circle cx='200' cy='100' r='40' fill='%23f1c40f'/><rect x='180' y='180' width='40' height='40' fill='%232c3e50'/><circle cx='150' cy='200' r='10' fill='%232ecc71'/><circle cx='250' cy='200' r='10' fill='%232ecc71'/><path d='M170,250 Q200,280 230,250' fill='none' stroke='%232c3e50' stroke-width='5'/></svg>" alt="Fête fin d'année" class="gallery-img">
+          <div class="gallery-caption">Fête fin d'année</div>
+        </div>
+        <div class="gallery-item">
+          <!-- Image générée pour la journée des écoles -->
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='400' height='400' fill='%232ecc71'/><rect x='50' y='200' width='300' height='150' fill='%23f1c40f'/><circle cx='100' cy='150' r='40' fill='%23e74c3c'/><circle cx='200' cy='150' r='40' fill='%233498db'/><circle cx='300' cy='150' r='40' fill='%239b59b6'/><rect x='120' cy='250' width='160' height='30' fill='%23333' rx='5'/></svg>" alt="Journée des écoles" class="gallery-img">
+          <div class="gallery-caption">Journée des écoles</div>
+        </div>
+        <div class="gallery-item">
+          <!-- Image générée pour les expériences scientifiques -->
+          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='400' height='400' fill='%233498db'/><rect x='150' y='100' width='100' height='200' fill='%23ecf0f1'/><circle cx='200' cy='150' r='30' fill='%23e74c3c'/><circle cx='200' cy='220' r='30' fill='%232ecc71'/><path d='M170,280 L230,280 L230,320 L170,320 Z' fill='%23f1c40f'/><rect x='180' y='320' width='40' height='30' fill='%23bdc3c7'/></svg>" alt="Expériences scientifiques" class="gallery-img">
+          <div class="gallery-caption">Expériences scientifiques</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Gallo Junior - Antsirabe</p>
+    <p>École primaire et collège - Tous droits réservés</p>
+  </footer>
+  
+  <div class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <script>
+    // Animation au défilement
+    document.addEventListener('DOMContentLoaded', function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fadeInUp');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+      });
+      
+      // Afficher/masquer le bouton de retour en haut
+      window.addEventListener('scroll', function() {
+        const scrollTop = document.querySelector('.scroll-top');
+        if (window.scrollY > 500) {
+          scrollTop.style.display = 'flex';
+        } else {
+          scrollTop.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
